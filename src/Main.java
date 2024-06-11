@@ -32,7 +32,7 @@ public class Main {
                     handleArrayListOperations(scanner, myArrayList);
                     break;
                 case 3:
-                    // Handle LinkedList operations here
+                    handleLinkedListOperations(scanner, myLinkedList);
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
@@ -691,3 +691,4 @@ public class Main {
         System.out.println("It took " + (endTime - startTime) / 1000.0 + " seconds");
     }
 }
+
