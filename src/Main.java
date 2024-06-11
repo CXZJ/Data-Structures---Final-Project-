@@ -270,28 +270,44 @@ public class Main {
     }
 
     // Removing data from MyArrayList
-    private static void removeData(Scanner scanner, MyArrayList<Person> myLinkedList) {
+    private static void removeData(Scanner scanner, MyArrayList<Person> myArrayList) {
+        System.out.println("Enter key to remove:");
+        String key = scanner.nextLine();
+        int index = 0;
+
+        for (int i = 0; i < myArrayList.size(); i++) {
+            if (myArrayList.get(i).getName().equals(key)) {
+                index = i;
+            }
+        }
+
         long startTime = System.currentTimeMillis();
 
-        System.out.println("Enter key to remove:");
-        int key = scanner.nextInt();
-        myLinkedList.remove(key);
+        myArrayList.remove(index);
 
         long endTime = System.currentTimeMillis();
-        System.out.println("Updated Hashmap: " + myLinkedList);
+        System.out.println("Updated Hashmap: " + myArrayList);
         System.out.println("It took " + (endTime - startTime) / 1000.0 + " seconds");
     }
 
     // Removing data from MyLinkedList
-    private static void removeData(Scanner scanner, MyLinkedList<Person2> myArrayList) {
+    private static void removeData(Scanner scanner, MyLinkedList<Person2> myLinkedList) {
+        System.out.println("Enter key to remove:");
+        String key = scanner.nextLine();
+        int index = 0;
+
+        for (int i = 0; i < myLinkedList.size(); i++) {
+            if (myLinkedList.get(i).getName().equals(key)) {
+                index = i;
+            }
+        }
+
         long startTime = System.currentTimeMillis();
 
-        System.out.println("Enter key to remove:");
-        int key = scanner.nextInt();
-        myArrayList.remove(key);
+        myLinkedList.remove(index);
 
         long endTime = System.currentTimeMillis();
-        System.out.println("Updated Hashmap: " + myArrayList);
+        System.out.println("Updated Hashmap: " + myLinkedList);
         System.out.println("It took " + (endTime - startTime) / 1000.0 + " seconds");
     }
 
