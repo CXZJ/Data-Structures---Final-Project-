@@ -83,6 +83,24 @@ public class MyLinkedList<T> {
         node2.value = temp;
     }
 
+    public void remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+        if (index == 0) {
+            head = head.next;
+        } else {
+            Node<T> previous = head;
+            for (int i = 0; i < index - 1; i++) {
+                previous = previous.next;
+            }
+            previous.next = previous.next.next;
+        }
+        size--;
+    }
+
+
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

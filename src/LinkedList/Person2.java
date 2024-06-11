@@ -1,10 +1,10 @@
 package LinkedList;
 
-public class Person implements Comparable<Person> {
+public class Person2 implements Comparable<Person2> {
     String name;
     int number;
 
-    public Person(String name, int number) {
+    public Person2(String name, int number) {
         this.name = name;
         this.number = number;
     }
@@ -18,7 +18,7 @@ public class Person implements Comparable<Person> {
     }
 
     @Override
-    public int compareTo(Person other) {
+    public int compareTo(Person2 other) {
         return Integer.compare(this.number, other.number);
     }
 

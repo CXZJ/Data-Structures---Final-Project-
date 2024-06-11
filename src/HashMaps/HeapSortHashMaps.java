@@ -1,6 +1,6 @@
 package HashMaps;
 
-public class HeapSort {
+public class HeapSortHashMaps {
     public static void heapSortInt(int arr[])
     {
         int N = arr.length;

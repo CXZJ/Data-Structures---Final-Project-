@@ -2,12 +2,12 @@ package ArrayList;
 
 import java.util.Random;
 
-public class QuickSort {
+public class QuickSortArrayList {
     public MyArrayList<Person> list;
     public int start;
     public int end;
 
-    public QuickSort(MyArrayList<Person> list, int start, int end) {
+    public QuickSortArrayList(MyArrayList<Person> list, int start, int end) {
         this.list = list;
         this.start = start;
         this.end = end;

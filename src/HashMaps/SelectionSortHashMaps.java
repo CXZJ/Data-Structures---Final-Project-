@@ -1,6 +1,6 @@
 package HashMaps;
 
-public class SelectionSort {
+public class SelectionSortHashMaps {
     public static void selectionSortInt(int[] list) {
         int n = list.length;
 
