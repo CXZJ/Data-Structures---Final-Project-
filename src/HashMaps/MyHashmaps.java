@@ -111,7 +111,6 @@ public class MyHashmaps<K,V> {
         return hash;
     }
 
-
     public void put(K key, V value){ // this is for the putting method
         int hash = getHash(key); // this is using a hashcode function to get the key in hash form
         // afterward its divided with the size of the array to be stored
@@ -153,7 +152,7 @@ public class MyHashmaps<K,V> {
     }
 
     public Entry<K, V> remove(K key) {
-        int hash = key.hashCode() % SIZE;
+        int hash = getHash(key);
         Entry<K, V> e = table[hash];
 
         if (e == null) {

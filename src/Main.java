@@ -55,10 +55,10 @@ public class Main {
                     loadDataFromFile(scanner, myHashmaps);
                     break;
                 case 2:
-                    addDataToHashmap(scanner, myHashmaps);
+                    addData(scanner, myHashmaps);
                     break;
                 case 3:
-                    removeDataFromHashmap(scanner, myHashmaps);
+                    removeData(scanner, myHashmaps);
                     break;
                 case 4:
                     System.out.println("Exiting...");
@@ -334,6 +334,53 @@ public class Main {
         }
     }
 
+    // Pulling out the option for sorting for MyLinkedList
+    private static void sort(Scanner scanner, MyLinkedList<Person2> myLinkedList) {
+        System.out.println("1. Selection Sort");
+        System.out.println("2. Heap Sort");
+        System.out.println("3. Quick Sort");
+        int sortChoice = scanner.nextInt();
+        scanner.nextLine();  // Consume the newline
+
+        switch (sortChoice) {
+            case 1:
+                handleSelectionSort(scanner, myLinkedList);
+                break;
+            case 2:
+                handleHeapSort(scanner, myLinkedList);
+                break;
+            case 3:
+                handleQuickSort(scanner, myLinkedList);
+                break;
+            default:
+                System.out.println("Invalid choice. Please try again.");
+        }
+    }
+
+    // Pulling out the option for sorting for MyArrayList
+    private static void sort(Scanner scanner, MyArrayList<Person> myArrayList) {
+        System.out.println("1. Selection Sort");
+        System.out.println("2. Heap Sort");
+        System.out.println("3. Quick Sort");
+        int sortChoice = scanner.nextInt();
+        scanner.nextLine();  // Consume the newline
+
+        switch (sortChoice) {
+            case 1:
+                handleSelectionSort(scanner, myArrayList);
+                break;
+            case 2:
+                handleHeapSort(scanner, myArrayList);
+                break;
+            case 3:
+                handleQuickSort(scanner, myArrayList);
+                break;
+            default:
+                System.out.println("Invalid choice. Please try again.");
+        }
+    }
+
+    // Handles the selection sort for HashMaps
     private static void handleSelectionSort(Scanner scanner, MyHashmaps<String, Integer> myHashmaps) {
         long startTime = System.currentTimeMillis();
 
@@ -418,7 +465,7 @@ public class Main {
         long startTime = System.currentTimeMillis();
 
         int[] intArray = Arrays.stream(myHashmaps.values()).mapToInt(Integer::parseInt).toArray();
-        QuickSort.quickSortInt(intArray, 0, intArray.length - 1);
+        QuickSortHashMaps.quickSortInt(intArray, 0, intArray.length - 1);
 
         long endTime = System.currentTimeMillis();
         System.out.println("It took " + (endTime - startTime) / 1000.0 + " seconds");
@@ -453,13 +500,14 @@ public class Main {
         searchInSortedArray(scanner, myArrayList);
     }
 
-    // Handles the quick sort for LinkedList
+    // Pulling out the option for searching for MyHashmaps
     private static void searchInSortedArray(Scanner scanner, MyHashmaps<String, Integer> myHashmaps) {
         System.out.println("Enter the username you want to find:");
         String targetName = scanner.nextLine();
 
         String[] stringArray = myHashmaps.keySet();
-        sortingFunction.sort(stringArray);
+        SelectionSortHashMaps.selectionSortString(stringArray);
+
 
         System.out.println("1. Linear Search");
         System.out.println("2. Binary Search");
@@ -478,7 +526,7 @@ public class Main {
         }
     }
 
-    
+    // Pulling out the option for searching for MyArrayList
     private static void searchInSortedArray(Scanner scanner, MyArrayList<Person> myArrayList) {
         System.out.println("Enter the username you want to find:");
         String targetName = scanner.nextLine();
@@ -487,6 +535,8 @@ public class Main {
         for (int i = 0; i < myArrayList.size(); i++) {
             stringArray[i] = myArrayList.get(i).getName();
         }
+        SelectionSortHashMaps.selectionSortString(stringArray);
+
 
         System.out.println("1. Linear Search");
         System.out.println("2. Binary Search");
@@ -505,6 +555,7 @@ public class Main {
         }
     }
 
+    // Pulling out the option for searching for MyLinkedList
     private static void searchInSortedArray(Scanner scanner, MyLinkedList<Person2> myLinkedList) {
         System.out.println("Enter the username you want to find:");
         String targetName = scanner.nextLine();
@@ -513,6 +564,7 @@ public class Main {
         for (int i = 0; i < myLinkedList.size(); i++) {
             stringArray[i] = myLinkedList.get(i).getName();
         }
+        SelectionSortHashMaps.selectionSortString(stringArray);
 
         System.out.println("1. Linear Search");
         System.out.println("2. Binary Search");
@@ -531,6 +583,7 @@ public class Main {
         }
     }
 
+    // Handles the Linear Search for MyHashMaps
     private static void performLinearSearch(MyHashmaps<String, Integer> myHashmaps, String[] stringArray, String targetName) {
         long startTime = System.currentTimeMillis();
 
@@ -545,6 +598,7 @@ public class Main {
         System.out.println("It took " + (endTime - startTime) / 1000.0 + " seconds");
     }
 
+    // Handles the Linear Search for MyLinkedList
     private static void performLinearSearch(MyLinkedList<Person2> myLinkedList, String targetName) {
         long startTime = System.currentTimeMillis();
         boolean test = false;
@@ -568,6 +622,7 @@ public class Main {
         System.out.println("It took " + (endTime - startTime) / 1000.0 + " seconds");
     }
 
+    // Handles the Linear Search for MyArrayList
     private static void performLinearSearch(MyArrayList<Person> myArrayList, String targetName) {
         long startTime = System.currentTimeMillis();
         boolean test = false;
@@ -591,6 +646,7 @@ public class Main {
         System.out.println("It took " + (endTime - startTime) / 1000.0 + " seconds");
     }
 
+    // Handles the Binary Search for MyHashMaps
     private static void performBinarySearch(MyHashmaps<String, Integer> myHashmaps, String[] stringArray, String targetName) {
         long startTime = System.currentTimeMillis();
 
@@ -605,6 +661,7 @@ public class Main {
         System.out.println("It took " + (endTime - startTime) / 1000.0 + " seconds");
     }
 
+    // Handles the Binary Search for MyHashMaps
     private static void performBinarySearch(MyLinkedList<Person2> myLinkedList, String[] stringArray, String targetName) {
         long startTime = System.currentTimeMillis();
 
@@ -619,6 +676,7 @@ public class Main {
         System.out.println("It took " + (endTime - startTime) / 1000.0 + " seconds");
     }
 
+    // Handles the Binary Search for MyHashMaps
     private static void performBinarySearch(MyArrayList<Person> myArrayList, String[] stringArray, String targetName) {
         long startTime = System.currentTimeMillis();
         System.out.println(myArrayList);

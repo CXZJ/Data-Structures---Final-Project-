@@ -1,6 +1,7 @@
 package LinkedList;
 
-public class HeapSort {
+
+public class HeapSortLinkedList {
 
     public static void sort(MyLinkedList<Person2> arr) {
         int N = arr.size();
