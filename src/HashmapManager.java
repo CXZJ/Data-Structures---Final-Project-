@@ -178,7 +178,7 @@ public class HashmapManager {
     }
 
     private static void performLinearSearch(MyHashmaps<String, Integer> myHashmaps, String[] stringArray, String targetName) {
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
 
         int index = LinearSearch.linearSearchString(stringArray, stringArray.length, targetName);
         if (index == -1) {
@@ -187,12 +187,12 @@ public class HashmapManager {
             System.out.println("This person's score is " + myHashmaps.get(targetName));
         }
 
-        long endTime = System.currentTimeMillis();
-        System.out.println("It took " + (endTime - startTime) / 1000.0 + " seconds");
+        long endTime = System.nanoTime();
+        System.out.println("It took " + (endTime - startTime) / 1000.0 + " nanos");
     }
 
     private static void performBinarySearch(MyHashmaps<String, Integer> myHashmaps, String[] stringArray, String targetName) {
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
 
         int index = BinarySearch.binarySearch(stringArray, targetName);
         if (index == -1) {
@@ -201,7 +201,7 @@ public class HashmapManager {
             System.out.println("This person's score is " + myHashmaps.get(targetName));
         }
 
-        long endTime = System.currentTimeMillis();
-        System.out.println("It took " + (endTime - startTime) / 1000.0 + " seconds");
+        long endTime = System.nanoTime();
+        System.out.println("It took " + (endTime - startTime) / 1000.0 + " nanos");
     }
 }

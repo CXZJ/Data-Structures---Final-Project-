@@ -79,14 +79,14 @@ public class ArrayListManager {
             }
         }
 
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
 
         if (isDuplicate) {myArrayList.set(index, person);}
         else {myArrayList.add(person);}
 
-        long endTime = System.currentTimeMillis();
+        long endTime = System.nanoTime();
         System.out.println("Updated Array List: " + myArrayList);
-        System.out.println("It took " + (endTime - startTime) / 1000.0 + " seconds");
+        System.out.println("It took " + (endTime - startTime) / 1000.0 + " nanos");
     }
 
     private static void removeData(Scanner scanner, MyArrayList<Person> myArrayList) {
@@ -100,13 +100,13 @@ public class ArrayListManager {
             }
         }
 
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
 
         myArrayList.remove(index);
 
-        long endTime = System.currentTimeMillis();
+        long endTime = System.nanoTime();
         System.out.println("Updated Hashmap: " + myArrayList);
-        System.out.println("It took " + (endTime - startTime) / 1000.0 + " seconds");
+        System.out.println("It took " + (endTime - startTime) / 1000.0 + " nanos");
     }
 
     private static void sort(Scanner scanner, MyArrayList<Person> myArrayList) {
@@ -196,7 +196,7 @@ public class ArrayListManager {
     }
 
     private static void performLinearSearch(MyArrayList<Person> myArrayList, String targetName) {
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
         boolean test = false;
         int score = 0;
 
@@ -214,13 +214,13 @@ public class ArrayListManager {
             System.out.println("Not found");
         }
 
-        long endTime = System.currentTimeMillis();
-        System.out.println("It took " + (endTime - startTime) / 1000.0 + " seconds");
+        long endTime = System.nanoTime();
+        System.out.println("It took " + (endTime - startTime) / 1000.0 + " nanos");
     }
 
     private static void performBinarySearch(MyArrayList<Person> myArrayList, String[] stringArray, String targetName) {
-        long startTime = System.currentTimeMillis();
-        System.out.println(myArrayList);
+        long startTime = System.nanoTime();
+
         int index = BinarySearch.binarySearch(stringArray, targetName);
         if (index == -1) {
             System.out.println("Not found");
@@ -228,7 +228,7 @@ public class ArrayListManager {
             System.out.println("This person's score is " + myArrayList.get(index).getNumber());
         }
 
-        long endTime = System.currentTimeMillis();
-        System.out.println("It took " + (endTime - startTime) / 1000.0 + " seconds");
+        long endTime = System.nanoTime();
+        System.out.println("It took " + (endTime - startTime) / 1000.0 + " nanos");
     }
 }

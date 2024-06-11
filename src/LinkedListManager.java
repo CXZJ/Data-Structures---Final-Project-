@@ -195,7 +195,7 @@ public class LinkedListManager {
     }
 
     private static void performLinearSearch(MyLinkedList<Person2> myLinkedList, String targetName) {
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
         boolean test = false;
         int score = 0;
 
@@ -213,12 +213,12 @@ public class LinkedListManager {
             System.out.println("Not found");
         }
 
-        long endTime = System.currentTimeMillis();
-        System.out.println("It took " + (endTime - startTime) / 1000.0 + " seconds");
+        long endTime = System.nanoTime();
+        System.out.println("It took " + (endTime - startTime) / 1000.0 + " nanos");
     }
 
     private static void performBinarySearch(MyLinkedList<Person2> myLinkedList, String[] stringArray, String targetName) {
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
 
         int index = BinarySearch.binarySearch(stringArray, targetName);
         if (index == -1) {
@@ -227,7 +227,7 @@ public class LinkedListManager {
             System.out.println("This person's score is " + myLinkedList.get(index).getNumber());
         }
 
-        long endTime = System.currentTimeMillis();
-        System.out.println("It took " + (endTime - startTime) / 1000.0 + " seconds");
+        long endTime = System.nanoTime();
+        System.out.println("It took " + (endTime - startTime) / 1000.0 + " nanos");
     }
 }
