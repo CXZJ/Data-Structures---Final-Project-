@@ -213,12 +213,13 @@ public class Main {
 
     // Adding data to HashMaps
     private static void addData(Scanner scanner, MyHashmaps<String, Integer> myHashmaps) {
-        long startTime = System.currentTimeMillis();
-
         System.out.println("Enter key to add:");
         String key = scanner.nextLine();
         System.out.println("Enter value to add:");
         int value = Integer.parseInt(scanner.nextLine());
+
+        long startTime = System.currentTimeMillis();
+
         myHashmaps.put(key, value);
 
         long endTime = System.currentTimeMillis();
@@ -228,13 +229,25 @@ public class Main {
 
     // Adding data to LinkedList
     private static void addData(Scanner scanner, MyLinkedList<Person2> myLinkedList) {
-        long startTime = System.currentTimeMillis();
-
         System.out.println("Enter key to add:");
         String name = scanner.nextLine();
         System.out.println("Enter value to add:");
         int number = Integer.parseInt(scanner.nextLine());
-        myLinkedList.add(new Person2(name, number));
+        Person2 person = new Person2(name, number);
+        int index = 0;
+        boolean isDuplicate = false;
+
+        for (int i = 0; i < myLinkedList.size(); i++) {
+            if (myLinkedList.get(i).getName().equals(name)) {
+                index = i;
+                isDuplicate = true;
+            }
+        }
+
+        long startTime = System.currentTimeMillis();
+
+        if (isDuplicate) {myLinkedList.set(index, person);}
+        else {myLinkedList.add(person);}
 
         long endTime = System.currentTimeMillis();
         System.out.println("Updated Array List: " + myLinkedList);
@@ -243,13 +256,25 @@ public class Main {
 
     // Adding data to ArrayList
     private static void addData(Scanner scanner, MyArrayList<Person> myArrayList) {
-        long startTime = System.currentTimeMillis();
-
         System.out.println("Enter key to add:");
         String name = scanner.nextLine();
         System.out.println("Enter value to add:");
         int number = Integer.parseInt(scanner.nextLine());
-        myArrayList.add(new Person(name, number));
+        Person person = new Person(name, number);
+        int index = 0;
+        boolean isDuplicate = false;
+
+        for (int i = 0; i < myArrayList.size(); i++) {
+            if (myArrayList.get(i).getName().equals(name)) {
+                index = i;
+                isDuplicate = true;
+            }
+        }
+
+        long startTime = System.currentTimeMillis();
+
+        if (isDuplicate) {myArrayList.set(index, person);}
+        else {myArrayList.add(person);}
 
         long endTime = System.currentTimeMillis();
         System.out.println("Updated Array List: " + myArrayList);

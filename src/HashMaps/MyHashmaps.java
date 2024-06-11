@@ -111,30 +111,37 @@ public class MyHashmaps<K,V> {
         return hash;
     }
 
-    public void put(K key, V value){ // this is for the putting method
-        int hash = getHash(key); // this is using a hashcode function to get the key in hash form
-        // afterward its divided with the size of the array to be stored
-        Entry<K, V> e = table[hash];
-
-        if (e == null){
-            table[hash]= new Entry<>(key,value); // enter value if empty
+    public void put(K key, V value) {
+        if (key == null) {
+            throw new IllegalArgumentException("Key cannot be null.");
         }
-        else{
-            while (e.next != null){ // update value if put in the same place
-                if(e.getKey() == key){ // if key exist
-                    e.setValue(value);
-                    return;
-                }
-                e = e.next;
-            }
-            if(e.getKey() == key){
+
+        int hash = getHash(key);
+        Entry<K, V> e = table[hash];
+        Entry<K, V> prev = null;
+
+        while (e != null) {
+            if (e.getKey().equals(key)) {
+                // Key already exists, update its value
                 e.setValue(value);
                 return;
             }
+            prev = e;
+            e = e.next;
+        }
 
-            e.next = new Entry<K, V>(key,value); //if key doesnt exist
+        // Key doesn't exist, add a new entry
+        Entry<K, V> newEntry = new Entry<>(key, value);
+        if (prev == null) {
+            // No collision, add at the head of the linked list
+            table[hash] = newEntry;
+        } else {
+            // Collision occurred, add at the end of the linked list
+            prev.next = newEntry;
         }
     }
+
+
     public V get(K key){
         int hash = getHash(key);
         Entry<K, V> e = table[hash];
@@ -179,6 +186,9 @@ public class MyHashmaps<K,V> {
         }
         return null;
     }
+
+
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < SIZE; i++) {

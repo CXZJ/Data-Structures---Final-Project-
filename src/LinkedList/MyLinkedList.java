@@ -100,7 +100,6 @@ public class MyLinkedList<T> {
     }
 
 
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
