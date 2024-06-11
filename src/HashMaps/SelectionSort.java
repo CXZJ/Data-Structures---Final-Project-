@@ -1,7 +1,5 @@
 package HashMaps;
 
-import ArrayList.MyArrayList;
-
 public class SelectionSort {
     public static void selectionSortInt(int[] list) {
         int n = list.length;
@@ -43,4 +41,3 @@ public class SelectionSort {
 
 
 }
-

@@ -1,9 +1,9 @@
 package HashMaps;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
 public class MyHashmaps<K,V> {
     // return the all of the keys only in list of strings
@@ -20,7 +20,7 @@ public class MyHashmaps<K,V> {
         return keys.toArray(new String[0]);
     }
     // return the all of the values only in list of strings
-    public String[] Values() {
+    public String[] values() {
         ArrayList<String> values = new ArrayList<>();
 
         for (int i = 0; i < SIZE; i++) {
@@ -98,7 +98,7 @@ public class MyHashmaps<K,V> {
         }
     }
     //field or HashMaps.MyHashmaps
-    private final int SIZE = 5; // creates the size for array
+    private final int SIZE = 10; // creates the size for array
 
     private Entry<K,V> table[]; // field
 
@@ -106,10 +106,11 @@ public class MyHashmaps<K,V> {
         table = new Entry[SIZE];
     }
 
-    private int getHash(K key) { // Ensure non-negative index
-        int hash = key.hashCode() % SIZE;
-        return hash < 0 ? -hash : hash;
+    private int getHash(K key) {
+        int hash = Math.abs(key.hashCode()) % SIZE;
+        return hash;
     }
+
 
     public void put(K key, V value){ // this is for the putting method
         int hash = getHash(key); // this is using a hashcode function to get the key in hash form
@@ -151,32 +152,34 @@ public class MyHashmaps<K,V> {
         return null;
     }
 
-    public Entry<K,V> remove(K key){
-        int hash = getHash(key);
+    public Entry<K, V> remove(K key) {
+        int hash = key.hashCode() % SIZE;
         Entry<K, V> e = table[hash];
 
-        if (e == null){
+        if (e == null) {
             return null;
         }
-        if (e.getKey() == key){
+
+        if (e.getKey().equals(key)) {
             table[hash] = e.next;
             e.next = null;
             return e;
         }
 
-        Entry<K,V> prev = e;
+        Entry<K, V> prev = e;
         e = e.next;
 
-        while (e != null){
-            if(e.getKey() == key){
+        while (e != null) {
+            if (e.getKey() == key) {
                 prev.next = e.next;
                 e.next = null;
                 return e;
             }
+            prev = e;
+            e = e.next;
         }
         return null;
     }
-    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < SIZE; i++) {
@@ -189,6 +192,7 @@ public class MyHashmaps<K,V> {
 
         return sb.toString();
     }
+
 }
 
 

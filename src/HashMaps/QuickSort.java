@@ -3,7 +3,7 @@ package HashMaps;
 import java.util.Random;
 
 public class QuickSort {
-    protected static void quickSortInt(int[] array, int start, int end){
+    public static void quickSortInt(int[] array, int start, int end){
         if(start >= end){ // this is so that the number wont compare itself over and over again
             return;
         }
